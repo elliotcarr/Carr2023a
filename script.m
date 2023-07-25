@@ -1,19 +1,17 @@
 clear all, close all, clc
 
 %% Plotting
-font_size = 30;
-line_width = 3;
-colors = [0,0,0; 214,45,32; 0,135,68; 0,87,231]/255;
-background_color = [1,1,1];
-linestyle = {'-','-','-','-'};
-label_array = {'(a)','(b)','(c)','(d)'};
 fig_path = './Figures/';
 cap_plots = true; % plot 3d capsule plots (true/false)
 % cap_plots = false;
 
+if ~exist('Figures', 'dir')
+    mkdir('Figures')
+end
+
 %% Test Cases
-% case_name = '1'; % pure diffusion (produces plots in Figs 3, 4, 5, 8, 9 from paper)
-case_name = '2'; % reaction diffusion (produces plots in Figs 3, 6, 7, 10 from paper)
+case_name = '1'; % pure diffusion (produces plots in Figs 3, 4, 5, 8, 9 from paper)
+% case_name = '2'; % reaction diffusion (produces plots in Figs 3, 6, 7, 10 from paper)
 
 %% Dimensional parameters
 R = 1e-4; % radius
@@ -55,7 +53,15 @@ if ~isfile('plasma.m')
     cmap = parula(Nc); % colormap  
 else
     cmap = plasma(Nc); % colormap
-end        
+end
+
+% plotting options
+font_size = 30;
+line_width = 3;
+colors = [0,0,0; 214,45,32; 0,135,68; 0,87,231]/255;
+background_color = [1,1,1];
+linestyle = {'-','-','-','-'};
+label_array = {'(a)','(b)','(c)','(d)'};
 
 for i = 1:length(alpha_vec)
 
